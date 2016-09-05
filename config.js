@@ -23,6 +23,13 @@ const SERVER_URL = (process.env.SERVER_URL) ?
 
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error('Missing config values');
+  var configMissing = [];
+  if (!APP_SECRET) configMissing.push('APP_SECRET');
+  if (!VALIDATION_TOKEN) configMissing.push('VALIDATION_TOKEN');
+  if (!PAGE_ACCESS_TOKEN) configMissing.push('PAGE_ACCESS_TOKEN');
+  if (!SERVER_URL) configMissing.push('SERVER_URL');
+
+  console.error(configMissing.toString())
   process.exit(1);
 }
 
